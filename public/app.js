@@ -6,7 +6,68 @@ $(document).ready(function() {
     updateCartBadge();
     checkAuthStatus();
     initTheme();
+    initSearch();
 });
+
+// Search Management
+function initSearch() {
+    const searchHtml = `
+        <div id="search-overlay">
+            <div class="search-close"><i class="bi bi-x-lg"></i></div>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <input type="text" class="search-input-field" placeholder="Koleksiyonunuzdaki eksik parçayı arayın..." autofocus>
+                        <div id="search-results" class="mt-5 row g-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    $('body').append(searchHtml);
+
+    $('#search-trigger').click(function() {
+        $('#search-overlay').fadeIn(300);
+        $('.search-input-field').focus();
+    });
+
+    $('.search-close, #search-overlay').click(function(e) {
+        if (e.target !== this && !$(e.target).hasClass('search-close') && !$(e.target).parent().hasClass('search-close')) return;
+        $('#search-overlay').fadeOut(300);
+    });
+
+    $('.search-input-field').on('input', function() {
+        const query = $(this).val().toLowerCase();
+        if (query.length < 2) {
+            $('#search-results').empty();
+            return;
+        }
+
+        $.get('/api/products', function(products) {
+            const matches = products.filter(p => 
+                p.name.toLowerCase().includes(query) || 
+                p.set?.toLowerCase().includes(query) ||
+                p.category.toLowerCase().includes(query)
+            );
+
+            let html = '';
+            matches.forEach(p => {
+                html += `
+                    <div class="col-12">
+                        <a href="product.html?id=${p.id}" class="search-result-item d-flex align-items-center gap-4 text-decoration-none">
+                            <img src="${p.image}" alt="${p.name}" style="width: 60px; height: 80px; object-fit: contain;">
+                            <div>
+                                <h6 class="fw-bold text-main mb-1 uppercase tracking-tight">${p.name}</h6>
+                                <p class="x-small text-muted mb-0 uppercase tracking-widest fw-bold">${p.category} | $${p.price}</p>
+                            </div>
+                        </a>
+                    </div>
+                `;
+            });
+            $('#search-results').html(html || '<div class="col-12 text-center text-muted py-5 fw-bold uppercase x-small tracking-widest">Sonuç bulunamadı.</div>');
+        });
+    });
+}
 
 // Theme Management
 function initTheme() {
@@ -44,7 +105,7 @@ function checkAuthStatus() {
         } else {
             authContainer.prepend(`
                 <div class="auth-out">
-                    <a href="auth.html" class="p-2 text-dark" title="Giriş Yap"><i class="bi bi-person h5 mb-0"></i></a>
+                    <a href="auth.html" class="p-2" title="Giriş Yap" style="color: var(--text-main);"><i class="bi bi-person h5 mb-0"></i></a>
                 </div>
             `);
         }

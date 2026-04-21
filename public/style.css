@@ -2,25 +2,26 @@
     --primary-red: #BF2929;
     --primary-hover: #A62424;
     --dark-gray: #333333;
-    --accent-yellow: #F7DC6F;
-    --light-bg: #fdfdfd;
+    --accent-yellow: #FFD700;
+    --accent-yellow-dark: #ccae00;
+    --light-bg: #f8f9fa;
     --card-bg: #FFFFFF;
-    --text-main: #1D1D1F;
+    --text-main: #1A1A1A;
     --text-muted: #6B7280;
-    --border-color: #E2E8F0;
+    --border-color: #E5E7EB;
     --navbar-bg: #FFFFFF;
     --input-bg: #FFFFFF;
 }
 
 [data-theme="dark"] {
-    --light-bg: #0D1117;
-    --card-bg: #161B22;
-    --text-main: #F0F6FC;
-    --text-muted: #8B949E;
-    --border-color: #30363D;
-    --navbar-bg: #161B22;
-    --input-bg: #0D1117;
-    --dark-gray: #F0F6FC;
+    --light-bg: #0B0E14;
+    --card-bg: #151921;
+    --text-main: #E2E8F0;
+    --text-muted: #94A3B8;
+    --border-color: #2D3748;
+    --navbar-bg: #151921;
+    --input-bg: #1E293B;
+    --dark-gray: #E2E8F0;
 }
 
 body {
@@ -42,6 +43,14 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
 .text-muted { color: var(--text-muted) !important; }
 .text-primary-red { color: var(--primary-red) !important; }
 .bg-primary-red { background-color: var(--primary-red) !important; }
+
+.cursor-pointer { cursor: pointer; }
+
+@media (min-width: 1200px) {
+    .gx-xl-10 {
+        --bs-gutter-x: 6rem;
+    }
+}
 
 /* Category Section Improvements */
 .category-card {
@@ -130,11 +139,23 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     border-radius: 2px;
 }
 
-/* Navbar Styling */
+/* Luxury Navbar with Glassmorphism */
 .navbar {
     background-color: var(--navbar-bg) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color) !important;
-    padding: 1rem 0;
+    padding: 0.8rem 0;
+    transition: all 0.3s ease;
+    z-index: 1050; /* Ensure it stays above sticky-top (1020) */
+}
+
+[data-theme="dark"] .navbar {
+    background-color: rgba(21, 25, 33, 0.8) !important;
+}
+
+[data-theme="light"] .navbar {
+    background-color: rgba(255, 255, 255, 0.8) !important;
 }
 
 .navbar-brand {
@@ -162,8 +183,75 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     filter: invert(var(--theme-invert, 0));
 }
 
-[data-theme="dark"] .navbar-toggler {
-    filter: invert(1);
+/* Luxury Filter Elements */
+.form-check {
+    padding-left: 0;
+    margin-bottom: 12px;
+}
+
+.filter-checkbox {
+    display: none;
+}
+
+.filter-checkbox + label {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: all 0.3s ease;
+}
+
+.filter-checkbox + label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-color);
+    background: var(--input-bg);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.filter-checkbox:checked + label:before {
+    background: var(--primary-red);
+    border-color: var(--primary-red);
+}
+
+.filter-checkbox:checked + label:after {
+    content: "\F26E"; /* Bootstrap check icon */
+    font-family: "bootstrap-icons";
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 0.7rem;
+}
+
+.filter-checkbox:checked + label {
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+/* Custom Scrollbar for Dark Mode */
+[data-theme="dark"] ::-webkit-scrollbar {
+    width: 10px;
+}
+[data-theme="dark"] ::-webkit-scrollbar-track {
+    background: var(--light-bg);
+}
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 10px;
+}
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
 }
 
 .logo-circle {
@@ -184,17 +272,115 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
 .animate-fade-in-up {
     animation: fadeInUp 0.8s ease backwards;
 }
 
-/* Hero Section */
+.floating-img {
+    animation: float 5s ease-in-out infinite;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: "/";
+    color: var(--text-muted);
+    font-size: 0.7rem;
+}
+
+.breadcrumb-item a {
+    transition: color 0.3s ease;
+}
+
+.breadcrumb-item a:hover {
+    color: var(--primary-red) !important;
+}
+
+/* Search Overlay */
+#search-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(var(--light-bg), 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 10000;
+    display: none;
+    padding-top: 100px;
+}
+
+[data-theme="dark"] #search-overlay {
+    background: rgba(11, 14, 20, 0.95);
+}
+
+.search-input-field {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--border-color);
+    border-radius: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-main);
+    padding: 1rem 0;
+    width: 100%;
+    transition: border-color 0.3s;
+}
+
+.search-input-field:focus {
+    outline: none;
+    border-color: var(--primary-red);
+}
+
+.search-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-main);
+    transition: transform 0.3s;
+}
+
+.search-close:hover {
+    transform: rotate(90deg);
+    color: var(--primary-red);
+}
+
+.search-result-item {
+    padding: 1rem;
+    border-radius: 12px;
+    transition: background 0.3s;
+    text-decoration: none;
+}
+
+.search-result-item:hover {
+    background: rgba(191, 41, 41, 0.05);
+}
+
+/* Hero Section Styling */
 .hero-section {
-    height: 80vh;
-    min-height: 550px;
+    height: 90vh;
+    min-height: 600px;
     position: relative;
     overflow: hidden;
     background-color: #000;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 5;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 70% 30%, rgba(191, 41, 41, 0.1) 0%, transparent 50%),
+                linear-gradient(to right, rgba(0,0,0,0.8) 0%, transparent 100%);
+    z-index: 2;
 }
 
 .hero-bg {
@@ -255,15 +441,23 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     position: absolute;
     top: 15px;
     left: 15px;
-    background: var(--dark-gray);
-    color: var(--light-bg);
+    background: var(--accent-yellow);
+    color: #000;
     font-size: 0.6rem;
     font-weight: 800;
-    padding: 4px 12px;
+    padding: 4px 14px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     z-index: 5;
-    border-radius: 20px;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Specific rarity overrides if needed */
+.badge-rarity.rarity-efsanevi {
+    background: linear-gradient(135deg, var(--accent-yellow) 0%, #FFA500 100%);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
 }
 
 /* Filters Sidebar */

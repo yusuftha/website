@@ -43,6 +43,7 @@
             </div>
 
             <div class="d-flex align-items-center gap-2" id="auth-actions">
+                <div id="search-trigger" class="p-2 cursor-pointer"><i class="bi bi-search h5 mb-0"></i></div>
                 <div id="theme-toggle" class="p-2">
                     <i class="bi bi-moon-fill h5 mb-0"></i>
                 </div>
@@ -57,26 +58,27 @@
     <!-- Hero Section -->
     <section class="hero-section text-white d-flex align-items-center">
         <img src="https://picsum.photos/seed/pokemonhero/1920/1080?blur=5" class="hero-bg" alt="bg">
-        <div class="container position-relative">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
             <div class="row align-items-center">
                 <div class="col-lg-7 animate-fade-in-up">
                     <span class="text-accent-yellow fw-bold x-small text-uppercase tracking-widest mb-3 d-block">Premium Pokémon Koleksiyonları</span>
                     <h1 class="display-2 fw-bold mb-4 lh-1 tracking-tighter">NADİR KARTLARIN<br><span class="text-primary-red">YENİ ADRESİ</span></h1>
-                    <p class="lead text-gray-300 mb-5 fw-medium" style="max-width: 500px">Dünyanın en nadir Pokémon kartları, mühürlü kutular ve profesyonel dereceli koleksiyon parçaları şimdi Türkiye'de.</p>
+                    <p class="lead text-gray-300 mb-5 fw-medium opacity-75" style="max-width: 500px">Dünyanın en nadir Pokémon kartları, mühürlü kutular ve profesyonel dereceli koleksiyon parçaları şimdi Türkiye'de.</p>
                     <div class="d-flex gap-3">
-                        <a href="shop.html" class="btn btn-primary">MARKETİ GEZ</a>
-                        <a href="shop.html?category=Dereceli Kartlar" class="btn btn-outline-light px-5 py-3 fw-bold rounded-0">DERECELİLER</a>
+                        <a href="shop.html" class="btn btn-primary px-5">MARKETİ GEZ</a>
+                        <a href="shop.html?category=Dereceli Kartlar" class="btn btn-outline-light px-5 py-3 fw-bold rounded-2">DERECELİLER</a>
                     </div>
                 </div>
                 <div class="col-lg-5 d-none d-lg-block">
-                    <img src="https://images.pokemontcg.io/sm115/SV49_hires.png" alt="Featured" class="img-fluid floating-img">
+                    <img src="https://images.pokemontcg.io/sm115/SV49_hires.png" alt="Featured" class="img-fluid floating-img" style="max-height: 550px">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- High Trust Indicators -->
-    <section class="py-5 border-bottom bg-main">
+    <section class="py-5 border-bottom" style="background-color: var(--light-bg);">
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-3 col-md-6 text-center">
@@ -124,10 +126,10 @@
                     <a href="shop.html?category=Tekli Kartlar" class="text-decoration-none">
                         <div class="category-card">
                             <img src="https://picsum.photos/seed/single-card/600/800" alt="Holo Cards">
-                            <div class="category-card-overlay">
-                                <div class="category-tag">NADİR</div>
-                                <h3 class="fw-bold tracking-tighter mb-1">TEKLİ KARTLAR</h3>
-                                <p class="small opacity-75 mb-0">Holo, Reverse Holo ve Gizli Nadir parçalar.</p>
+                            <div class="category-card-overlay d-flex flex-column justify-content-end p-4">
+                                <span class="category-tag mb-2">NADİR</span>
+                                <h3 class="fw-extrabold tracking-tighter mb-1 text-white">TEKLİ KARTLAR</h3>
+                                <p class="small opacity-75 mb-0 text-white-50">Holo, Reverse Holo ve Gizli Nadir parçalar.</p>
                             </div>
                         </div>
                     </a>
@@ -136,10 +138,10 @@
                     <a href="shop.html?category=Booster Paketleri" class="text-decoration-none">
                         <div class="category-card">
                             <img src="https://picsum.photos/seed/tcg-pack/600/800" alt="Boosters">
-                            <div class="category-card-overlay">
-                                <div class="category-tag">YENİ</div>
-                                <h3 class="fw-bold tracking-tighter mb-1">BOOSTER PAKETLERİ</h3>
-                                <p class="small opacity-75 mb-0">En yeni setlerden sealed (mühürlü) paketler.</p>
+                            <div class="category-card-overlay d-flex flex-column justify-content-end p-4">
+                                <span class="category-tag mb-2">YENİ</span>
+                                <h3 class="fw-extrabold tracking-tighter mb-1 text-white">BOOSTER PAKETLERİ</h3>
+                                <p class="small opacity-75 mb-0 text-white-50">En yeni setlerden sealed (mühürlü) paketler.</p>
                             </div>
                         </div>
                     </a>
@@ -148,10 +150,10 @@
                     <a href="shop.html?category=Dereceli Kartlar" class="text-decoration-none">
                         <div class="category-card">
                             <img src="https://picsum.photos/seed/psa-graded/600/800" alt="Graded">
-                            <div class="category-card-overlay">
-                                <div class="category-tag">PREMIUM</div>
-                                <h3 class="fw-bold tracking-tighter mb-1">DERECELİ KARTLAR</h3>
-                                <p class="small opacity-75 mb-0">PSA ve CGC onaylı yatırım değeri yüksek kartlar.</p>
+                            <div class="category-card-overlay d-flex flex-column justify-content-end p-4">
+                                <span class="category-tag mb-2">PREMIUM</span>
+                                <h3 class="fw-extrabold tracking-tighter mb-1 text-white">DERECELİ KARTLAR</h3>
+                                <p class="small opacity-75 mb-0 text-white-50">PSA ve CGC onaylı yatırım değeri yüksek kartlar.</p>
                             </div>
                         </div>
                     </a>
@@ -161,16 +163,30 @@
     </section>
 
     <!-- Featured Products -->
-    <section class="py-5 bg-light">
+    <section class="py-5" style="background-color: var(--light-bg); border-bottom: 1px solid var(--border-color);">
         <div class="container">
             <div class="d-flex justify-content-between align-items-end mb-5">
                 <div>
-                    <h2 class="text-uppercase fw-bold tracking-tighter mb-0">ÖNE ÇIKANLAR</h2>
-                    <div class="header-line"></div>
+                    <span class="text-primary-red fw-bold x-small text-uppercase tracking-widest mb-2 d-block">Haftalık Seçim</span>
+                    <h2 class="text-uppercase fw-extrabold tracking-tighter mb-0 text-main">ÖNE ÇIKANLAR</h2>
                 </div>
-                <a href="shop.html" class="text-primary-red fw-bold text-decoration-none small tracking-widest">TÜMÜNÜ GÖR &rarr;</a>
+                <a href="shop.html" class="btn btn-link text-main fw-bold x-small tracking-widest text-decoration-none p-0 border-bottom border-2 border-primary-red">HEPSİNİ GÖR</a>
             </div>
             <div class="row g-4" id="featured-products">
+                <!-- Products dynamically loaded -->
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals -->
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <span class="text-primary-red fw-bold x-small text-uppercase tracking-widest mb-2 d-block">Taze Stok</span>
+                <h2 class="text-uppercase fw-extrabold tracking-tighter mb-0 text-main">YENİ GELENLER</h2>
+                <div class="header-line mx-auto mt-3" style="width: 60px;"></div>
+            </div>
+            <div class="row g-4" id="new-arrivals">
                 <!-- Products dynamically loaded -->
             </div>
         </div>
@@ -253,39 +269,46 @@
     <script src="app.js"></script>
     <script>
         $(document).ready(function() {
-            loadFeaturedProducts();
+            loadHomeProducts();
         });
 
-        function loadFeaturedProducts() {
+        function loadHomeProducts() {
             $.get('/api/products', function(products) {
-                const featured = products.slice(0, 4);
-                let html = '';
-                featured.forEach(p => {
-                    html += `
-                        <div class="col-md-3">
-                            <div class="card product-card border-0 h-100 position-relative shadow-sm">
-                                <div class="badge-rarity">${p.rarity}</div>
-                                <a href="product.html?id=${p.id}" class="text-decoration-none">
-                                    <div class="card-img-container">
-                                        <img src="${p.image}" class="img-fluid" alt="${p.name}">
-                                    </div>
-                                </a>
-                                <div class="card-body p-4 d-flex flex-column">
-                                    <span class="text-primary-red x-small fw-bold text-uppercase tracking-widest mb-2 d-block">${p.category}</span>
-                                    <h6 class="fw-bold mb-3 tracking-tighter text-main">${p.name}</h6>
-                                    <div class="d-flex justify-content-between align-items-center mt-auto pt-3 border-top">
-                                        <span class="fw-bold text-main h5 mb-0 tracking-tighter">$${p.price.toFixed(2)}</span>
-                                        <button onclick="addToCart('${p.id}')" class="btn btn-primary btn-sm rounded-circle p-0" style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;">
-                                            <i class="bi bi-cart-plus"></i>
+                // Featured (first 4)
+                renderProductGroup(products.slice(0, 4), '#featured-products');
+                // New Arrivals (next 4)
+                renderProductGroup(products.slice(4, 8), '#new-arrivals');
+            });
+        }
+
+        function renderProductGroup(list, containerId) {
+            let html = '';
+            list.forEach(p => {
+                const rarityClass = p.rarity.toLowerCase() === 'efsanevi' ? 'rarity-efsanevi' : '';
+                html += `
+                    <div class="col-lg-3 col-md-6">
+                        <div class="product-card border-0 shadow-none h-100 mb-4">
+                            <a href="product.html?id=${p.id}" class="text-decoration-none">
+                                <div class="product-img-container p-4 bg-light-subtle rounded-4 mb-3 position-relative overflow-hidden">
+                                    <span class="badge-rarity ${rarityClass} py-1 px-3 x-small">${p.rarity}</span>
+                                    <img src="${p.image}" class="img-fluid product-img mx-auto d-block" alt="${p.name}">
+                                </div>
+                                <div class="px-2">
+                                    <span class="text-primary-red fw-bold x-small opacity-75 tracking-widest uppercase mb-1 d-block">${p.category}</span>
+                                    <h6 class="fw-bold text-main mb-2 tracking-tight uppercase">${p.name}</h6>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="fw-bold text-main h6 mb-0">$${p.price.toLocaleString()}</span>
+                                        <button onclick="event.preventDefault(); addToCart('${p.id}')" class="btn btn-sm btn-primary rounded-circle shadow-sm" style="width: 32px; height: 32px; padding: 0;">
+                                            <i class="bi bi-plus"></i>
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
-                    `;
-                });
-                $('#featured-products').html(html);
+                    </div>
+                `;
             });
+            $(containerId).html(html || '<div class="col-12 text-center text-muted py-5">Ürün bulunamadı.</div>');
         }
     </script>
 </body>

@@ -20,7 +20,7 @@
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
                 <div class="logo-circle bg-primary-red rounded-circle"></div>
-                <span class="fw-bold tracking-tighter text-dark">BOUTIQUE<span class="text-primary-red">TCG</span></span>
+                <span class="fw-bold tracking-tighter">BOUTIQUE<span class="text-primary-red">TCG</span></span>
             </a>
             <div class="collapse navbar-collapse justify-content-center" id="navContent">
                 <ul class="navbar-nav">
@@ -29,6 +29,7 @@
                 </ul>
             </div>
             <div class="d-flex align-items-center gap-2" id="auth-actions">
+                <div id="search-trigger" class="p-2 cursor-pointer"><i class="bi bi-search h5 mb-0"></i></div>
                 <div id="theme-toggle" class="p-2"><i class="bi bi-moon-fill h5 mb-0"></i></div>
             </div>
         </div>
@@ -156,7 +157,7 @@
                                     <span class="text-primary-red x-small fw-bold text-uppercase tracking-widest">${item.category}</span>
                                 </div>
                                 <div class="col-6 col-md-3 mt-3 mt-md-0">
-                                    <div class="d-flex align-items-center border border-2 w-fit rounded-pill bg-light" style="border-color: var(--border-color) !important;">
+                                    <div class="d-flex align-items-center border border-2 w-fit rounded-pill" style="border-color: var(--border-color) !important; background-color: var(--input-bg);">
                                         <button onclick="updateQuantity('${item.id}', -1)" class="btn btn-sm text-main border-0 rounded-0 px-3"><i class="bi bi-dash fw-bold"></i></button>
                                         <span class="px-2 fw-bold small text-main">${item.quantity}</span>
                                         <button onclick="updateQuantity('${item.id}', 1)" class="btn btn-sm text-main border-0 rounded-0 px-3"><i class="bi bi-plus fw-bold"></i></button>

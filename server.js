@@ -14,12 +14,86 @@ const PORT = 3000;
 // Mock Database
 const users = [];
 const products = [
-    { id: '1', name: 'Charizard GX (Full Art)', price: 1250.00, image: 'https://images.pokemontcg.io/sm115/SV49_hires.png', category: 'Tekli Kartlar', rarity: 'Nadir', description: 'Shiny Vault serisinden muazzam kondisyonda bir Charizard.' },
-    { id: '2', name: 'Lugia Legend (Bottom)', price: 420.00, image: 'https://images.pokemontcg.io/hgss1/114_hires.png', category: 'Tekli Kartlar', rarity: 'Efsanevi', description: 'HGSS döneminden kalma efsanevi Lugia parças.' },
-    { id: '3', name: 'Sword & Shield Booster', price: 95.00, image: 'https://picsum.photos/seed/booster/600/800', category: 'Booster Paketleri', rarity: 'Normal', description: 'Garantili hologramlı Sword & Shield booster paket.' },
-    { id: '4', name: 'Rayquaza VMAX (Alt Art)', price: 1850.00, image: 'https://images.pokemontcg.io/swsh7/194_hires.png', category: 'Dereceli Kartlar', rarity: 'Gizli Nadir', description: 'Evolving Skies setinin en değerli kartlarından biri.' },
-    { id: '5', name: 'Elite Trainer Box', price: 1540.00, image: 'https://picsum.photos/seed/etb/600/800', category: 'Elite Trainer Boxlar', rarity: 'Mühürlü', description: 'İçerisinde 8 paket ve özel koleksiyon aksesuarları.' },
-    { id: '6', name: 'Umbreon VMAX (Alt Art)', price: 2100.00, image: 'https://images.pokemontcg.io/swsh7/215_hires.png', category: 'Dereceli Kartlar', rarity: 'Gizli Nadir', description: 'Koleksiyoncuların rüyası, Moonbreon olarak bilinen nadide parça.' }
+    { 
+        id: '1', 
+        name: 'Charizard GX (Full Art)', 
+        price: 1250.00, 
+        image: 'https://images.pokemontcg.io/sm115/SV49_hires.png', 
+        category: 'Tekli Kartlar', 
+        rarity: 'Nadir', 
+        description: 'Shiny Vault serisinden muazzam kondisyonda bir Charizard. Bu kart, Hidden Fates setinin en gözde parçalarından biridir ve koleksiyoncular için vazgeçilmez bir yatırımdır.',
+        set: 'Hidden Fates',
+        number: 'SV49/SV94',
+        illustrator: '5ban Graphics',
+        condition: 'Mint (10/10)',
+        language: 'İngilizce'
+    },
+    { 
+        id: '2', 
+        name: 'Lugia Legend (Bottom)', 
+        price: 420.00, 
+        image: 'https://images.pokemontcg.io/hgss1/114_hires.png', 
+        category: 'Tekli Kartlar', 
+        rarity: 'Efsanevi', 
+        description: 'HGSS döneminden kalma efsanevi Lugia parçası. HeartGold SoulSilver setinin efsanevi ikili kart sisteminin alt yarısıdır.',
+        set: 'HeartGold SoulSilver',
+        number: '114/123',
+        illustrator: 'Shinji Higuchi',
+        condition: 'Near Mint (9/10)',
+        language: 'İngilizce'
+    },
+    { 
+        id: '3', 
+        name: 'Sword & Shield Booster', 
+        price: 45.00, 
+        image: 'https://picsum.photos/seed/booster/600/800', 
+        category: 'Booster Paketleri', 
+        rarity: 'Normal', 
+        description: 'Garantili hologramlı Sword & Shield booster paket. İçerisinde 10 adet orijinal Pokémon TCG kartı ve 1 adet online kod kartı bulunur.',
+        set: 'Sword & Shield Base',
+        condition: 'Mühürlü (Sealed)',
+        language: 'İngilizce'
+    },
+    { 
+        id: '4', 
+        name: 'Rayquaza VMAX (Alt Art)', 
+        price: 1850.00, 
+        image: 'https://images.pokemontcg.io/swsh7/194_hires.png', 
+        category: 'Dereceli Kartlar', 
+        rarity: 'Efsanevi', 
+        description: 'Evolving Skies setinin en değerli ve sanatsal açıdan en etkileyici kartlarından biri. Rayquaza\'nın heybetli duruşu özel illüstrasyonla hayat buluyor.',
+        set: 'Evolving Skies',
+        number: '194/203',
+        illustrator: 'Anesaki Dynamic',
+        condition: 'PSA 10 (Gem Mint)',
+        language: 'İngilizce'
+    },
+    { 
+        id: '5', 
+        name: 'Elite Trainer Box', 
+        price: 1540.00, 
+        image: 'https://picsum.photos/seed/etb/600/800', 
+        category: 'Elite Trainer Boxlar', 
+        rarity: 'Mühürlü', 
+        description: 'Büyük Set koleksiyonu için ideal başlangıç. İçerisinde 8 paket, özel kılıflar, enerji kartları ve koleksiyon rehberi yer alır.',
+        set: 'Celebrations',
+        condition: 'Mühürlü (Sealed)',
+        language: 'İngilizce'
+    },
+    { 
+        id: '6', 
+        name: 'Umbreon VMAX (Alt Art)', 
+        price: 2100.00, 
+        image: 'https://images.pokemontcg.io/swsh7/215_hires.png', 
+        category: 'Dereceli Kartlar', 
+        rarity: 'Efsanevi', 
+        description: 'Koleksiyoncuların rüyası, Moonbreon olarak bilinen nadide parça. Gece karanlığında kulelerin tepesinde duran Umbreon illüstrasyonu eşsizdir.',
+        set: 'Evolving Skies',
+        number: '215/203',
+        illustrator: 'Keiichiro Ito',
+        condition: 'PSA 9 (Mint)',
+        language: 'İngilizce'
+    }
 ];
 const orders = [];
 

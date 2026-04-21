@@ -29,6 +29,7 @@
                 </ul>
             </div>
             <div class="d-flex align-items-center gap-2" id="auth-actions">
+                <div id="search-trigger" class="p-2 cursor-pointer"><i class="bi bi-search h5 mb-0"></i></div>
                 <div id="theme-toggle" class="p-2"><i class="bi bi-moon-fill h5 mb-0"></i></div>
                 <a href="cart.html" class="position-relative p-2">
                     <i class="bi bi-bag h5 mb-0"></i>
@@ -59,6 +60,62 @@
                         <a href="shop.html?category=Dereceli Kartlar" class="nav-link category-btn" data-cat="Dereceli Kartlar">
                             <i class="bi bi-award me-2"></i> Dereceli Kartlar
                         </a>
+                    </div>
+
+                    <h6 class="fw-bold mb-3 tracking-widest uppercase x-small text-muted border-bottom pb-2 mt-5">Nadirlik</h6>
+                    <div class="mb-4">
+                        <div class="form-check mb-2">
+                            <input class="filter-checkbox" type="checkbox" value="Efsanevi" id="rare-legendary">
+                            <label for="rare-legendary">Efsanevi</label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="filter-checkbox" type="checkbox" value="Nadir" id="rare-rare">
+                            <label for="rare-rare">Nadir</label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="filter-checkbox" type="checkbox" value="Ortak" id="rare-common">
+                            <label for="rare-common">Ortak</label>
+                        </div>
+                    </div>
+
+                    <h6 class="fw-bold mb-3 tracking-widest uppercase x-small text-muted border-bottom pb-2 mt-4">Kondisyon</h6>
+                    <div class="mb-4">
+                        <div class="form-check mb-2">
+                            <input class="filter-checkbox" type="checkbox" value="Mint" id="cond-mint">
+                            <label for="cond-mint">Mint (10/10)</label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="filter-checkbox" type="checkbox" value="Near Mint" id="cond-nm">
+                            <label for="cond-nm">Near Mint (9/10)</label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="filter-checkbox" type="checkbox" value="Excellent" id="cond-ex">
+                            <label for="cond-ex">Excellent (8/10)</label>
+                        </div>
+                    </div>
+
+                    <h6 class="fw-bold mb-3 tracking-widest uppercase x-small text-muted border-bottom pb-2 mt-4">Fiyat Aralığı</h6>
+                    <div class="mb-4">
+                        <div class="form-check mb-2">
+                            <input class="filter-checkbox" type="checkbox" value="0-50" id="price-low">
+                            <label for="price-low">$0 - $50</label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="filter-checkbox" type="checkbox" value="50-200" id="price-mid">
+                            <label for="price-mid">$50 - $200</label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="filter-checkbox" type="checkbox" value="200-above" id="price-high">
+                            <label for="price-high">$200+</label>
+                        </div>
+                    </div>
+
+                    <h6 class="fw-bold mb-3 tracking-widest uppercase x-small text-muted border-bottom pb-2 mt-4">Durum</h6>
+                    <div class="mb-4">
+                        <div class="form-check mb-2">
+                            <input class="filter-checkbox" type="checkbox" value="in-stock" id="stock-in" checked>
+                            <label for="stock-in">Stokta Var</label>
+                        </div>
                     </div>
                     
                     <div class="mt-5 p-4 rounded-4 bg-primary-red text-white">
@@ -147,34 +204,81 @@
     <script src="app.js"></script>
     <script>
         let allProducts = [];
+        let activeCategory = getUrlParam('category') || 'all';
 
         $(document).ready(function() {
-            const category = getUrlParam('category');
-            loadProducts(category);
+            loadProducts(activeCategory);
             
-            if (category) {
-                $('#shop-title').text(category.toUpperCase());
+            if (activeCategory !== 'all') {
+                $('#shop-title').text(activeCategory.toUpperCase());
                 $('.category-btn').removeClass('active');
-                $(`.category-btn[data-cat="${category}"]`).addClass('active');
+                $(`.category-btn[data-cat="${activeCategory}"]`).addClass('active');
             }
 
-            $('#sort-select').change(function() {
-                renderGrid(applySorting(filterProducts(allProducts, category)));
+            $('.filter-checkbox, #sort-select').on('change', function() {
+                updateUI();
             });
         });
 
         function loadProducts(categoryFilter) {
             $.get('/api/products', function(products) {
                 allProducts = products;
-                const filtered = filterProducts(allProducts, categoryFilter);
-                const sorted = applySorting(filtered);
-                renderGrid(sorted);
+                updateUI();
             });
         }
 
-        function filterProducts(products, categoryFilter) {
-            if (!categoryFilter) return products;
-            return products.filter(p => p.category === categoryFilter);
+        function updateUI() {
+            let filtered = filterProducts(allProducts);
+            let sorted = applySorting(filtered);
+            renderGrid(sorted);
+        }
+
+        function filterProducts(products) {
+            let result = [...products];
+
+            // Category Filter
+            if (activeCategory && activeCategory !== 'all') {
+                result = result.filter(p => p.category === activeCategory);
+            }
+
+            // Rarity Filter
+            const selectedRarities = $('.filter-checkbox[id^="rare-"]:checked').map(function() {
+                return $(this).val();
+            }).get();
+            if (selectedRarities.length > 0) {
+                result = result.filter(p => selectedRarities.includes(p.rarity));
+            }
+
+            // Condition Filter
+            const selectedConditions = $('.filter-checkbox[id^="cond-"]:checked').map(function() {
+                return $(this).val();
+            }).get();
+            if (selectedConditions.length > 0) {
+                result = result.filter(p => selectedConditions.includes(p.condition || 'Near Mint'));
+            }
+
+            // Price Filter
+            const selectedPrices = $('.filter-checkbox[id^="price-"]:checked').map(function() {
+                return $(this).val();
+            }).get();
+            if (selectedPrices.length > 0) {
+                result = result.filter(p => {
+                    return selectedPrices.some(range => {
+                        if (range === '0-50') return p.price <= 50;
+                        if (range === '50-200') return p.price > 50 && p.price <= 200;
+                        if (range === '200-above') return p.price > 200;
+                        return false;
+                    });
+                });
+            }
+
+            // Stock Filter
+            const showOnlyInStock = $('#stock-in').is(':checked');
+            if (showOnlyInStock) {
+                result = result.filter(p => p.stock > 0 || p.stock === undefined);
+            }
+
+            return result;
         }
 
         function applySorting(products) {
@@ -189,30 +293,38 @@
         function renderGrid(products) {
             $('#result-count').text(`${products.length} ÜRÜN`);
             let html = '';
-            products.forEach(p => {
-                html += `
-                    <div class="col-md-4 animate-fade-in-up">
-                         <div class="card product-card border-0 h-100 position-relative shadow-sm">
-                            <div class="badge-rarity">${p.rarity}</div>
-                            <a href="product.html?id=${p.id}" class="text-decoration-none">
-                                <div class="card-img-container">
-                                    <img src="${p.image}" class="img-fluid" alt="${p.name}">
-                                </div>
-                            </a>
-                            <div class="card-body p-4 d-flex flex-column">
-                                <span class="text-primary-red x-small fw-bold text-uppercase tracking-widest mb-2 d-block">${p.category}</span>
-                                <h6 class="fw-bold mb-3 tracking-tighter text-main">${p.name}</h6>
-                                <div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
-                                    <span class="fw-bold h5 mb-0 tracking-tighter text-main">$${p.price.toFixed(2)}</span>
-                                    <button onclick="addToCart('${p.id}')" class="btn btn-primary d-flex align-items-center justify-content-center p-0" style="width: 36px; height: 36px;">
-                                        <i class="bi bi-cart-plus"></i>
-                                    </button>
+            if (products.length === 0) {
+                html = '<div class="col-12 py-5 text-center"><div class="opacity-50 mb-3"><i class="bi bi-search display-1"></i></div><h4 class="fw-bold text-muted">Aradığınız kriterlere uygun ürün bulunamadı.</h4></div>';
+            } else {
+                products.forEach(p => {
+                    const rarityClass = p.rarity.toLowerCase() === 'efsanevi' ? 'rarity-efsanevi' : '';
+                    html += `
+                        <div class="col-md-4 animate-fade-in-up">
+                            <div class="card product-card border-0 h-100 position-relative shadow-sm">
+                                <div class="badge-rarity ${rarityClass}">${p.rarity}</div>
+                                <a href="product.html?id=${p.id}" class="text-decoration-none">
+                                    <div class="card-img-container">
+                                        <img src="${p.image}" class="img-fluid" alt="${p.name}">
+                                    </div>
+                                </a>
+                                <div class="card-body p-4 d-flex flex-column">
+                                    <span class="text-primary-red x-small fw-bold text-uppercase tracking-widest mb-2 d-block">${p.category}</span>
+                                    <h6 class="fw-bold mb-3 tracking-tighter text-main">${p.name}</h6>
+                                    <div class="mt-auto pt-3 border-top d-flex justify-content-between align-items-center">
+                                        <div class="d-flex flex-column">
+                                            <span class="fw-bold h5 mb-0 tracking-tighter text-main">$${p.price.toLocaleString()}</span>
+                                            <span class="x-small text-muted fw-bold">${p.condition || 'Near Mint'}</span>
+                                        </div>
+                                        <button onclick="addToCart('${p.id}')" class="btn btn-primary d-flex align-items-center justify-content-center p-0" style="width: 40px; height: 40px; border-radius: 12px;">
+                                            <i class="bi bi-cart-plus h5 mb-0"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                `;
-            });
+                    `;
+                });
+            }
             $('#product-grid').html(html);
         }
     </script>
