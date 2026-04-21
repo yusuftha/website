@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ürün Detayı - Boutique TCG</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('tcg_theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <div class="logo-circle bg-primary-red rounded-circle"></div>
+                <span class="fw-bold tracking-tighter text-dark">BOUTIQUE<span class="text-primary-red">TCG</span></span>
+            </a>
+            <div class="collapse navbar-collapse justify-content-center" id="navContent">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Ana Sayfa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html">Mağaza</a></li>
+                </ul>
+            </div>
+            <div class="d-flex align-items-center gap-2" id="auth-actions">
+                <div id="theme-toggle" class="p-2"><i class="bi bi-moon-fill h5 mb-0"></i></div>
+                <a href="cart.html" class="position-relative p-2">
+                    <i class="bi bi-bag h5 mb-0"></i>
+                    <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary-red opacity-0" style="font-size: 0.6rem; padding: 4px 6px;">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5" id="product-detail"></div>
+
+    <!-- Redesigned Footer -->
+    <footer class="py-5 mt-5">
+        <div class="container pt-5">
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6">
+                    <a class="navbar-brand d-flex align-items-center gap-2 mb-4 p-0" href="index.html">
+                        <div class="logo-circle bg-primary-red rounded-circle"></div>
+                        <span class="fw-bold tracking-tighter">BOUTIQUE<span class="text-primary-red">TCG</span></span>
+                    </a>
+                    <p class="text-muted small leading-relaxed mb-4">
+                        Nadir Pokémon koleksiyoncuları için küratörlüğü yapılmış, güvenilir ve tutkulu bir pazar yeri. Hazineleriniz burada güvende.
+                    </p>
+                    <div class="d-flex">
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-discord"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold x-small text-uppercase tracking-widest mb-4">Keşfet</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="shop.html" class="footer-link">Tüm Kartlar</a></li>
+                        <li class="mb-2"><a href="shop.html?category=Dereceli Kartlar" class="footer-link">Dereceli Kartlar</a></li>
+                        <li class="mb-2"><a href="shop.html?category=Booster Paketleri" class="footer-link">Booster'lar</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold x-small text-uppercase tracking-widest mb-4">Destek</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="footer-link">Kargo Takip</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">SSS</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Kullanım Şartları</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h6 class="fw-bold x-small text-uppercase tracking-widest mb-4">Bülten</h6>
+                    <p class="text-muted small mb-4">Yeni gelen nadir parçalardan ilk siz haberdar olun.</p>
+                    <div class="input-group">
+                        <input type="email" class="form-control rounded-start-pill border-2 ps-4 x-small fw-bold" placeholder="E-posta adresiniz">
+                        <button class="btn btn-primary rounded-end-pill px-4 x-small fw-bold">KATIL</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top mt-5 pt-4 d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+                <p class="x-small text-muted fw-bold mb-0">© 2026 BOUTIQUE TCG. GERÇEK TUTKUYLA ÜRETİLDİ.</p>
+                <div class="d-flex gap-4">
+                    <img src="https://cdn-icons-png.flaticon.com/512/349/349221.png" height="20" class="opacity-50 grayscale" alt="Visa">
+                    <img src="https://cdn-icons-png.flaticon.com/512/349/349228.png" height="20" class="opacity-50 grayscale" alt="MasterCard">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        $(document).ready(function() {
+            const id = getUrlParam('id');
+            if (id) loadProductDetail(id);
+        });
+
+        function loadProductDetail(id) {
+            $.get(`/api/products/${id}`, function(p) {
+                const html = `
+                    <div class="row g-5 align-items-center animate-fade-in-up mt-2">
+                        <div class="col-md-6">
+                            <div class="card border-0 bg-transparent p-2 p-md-5 floating-img">
+                                <span class="badge-rarity h5 py-2 px-4 shadow-lg text-white" style="top: -10px; left: -10px; background: var(--primary-red);">${p.rarity}</span>
+                                <img src="${p.image}" class="img-fluid mx-auto d-block product-detail-img" alt="${p.name}" style="filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3)); border-radius: 12px;">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="text-primary-red fw-bold text-uppercase tracking-widest mb-3 d-block">${p.category}</span>
+                            <h1 class="display-4 fw-bold mb-4 tracking-tighter uppercase text-main">${p.name}</h1>
+                            <div class="h2 fw-bold text-primary-red mb-4 tracking-tighter">$${p.price.toFixed(2)}</div>
+                            <p class="text-muted mb-5 lead fw-light" style="line-height: 1.8">${p.description || 'Bu nadir kart, koleksiyonunuzun en değerli parçası olmaya aday. Pokémon dünyasının eşsiz gücünü ve tasarımını yanınızda taşıyın.'}</p>
+                            
+                            <div class="d-flex gap-3 mb-5">
+                                <button onclick="addToCart('${p.id}')" class="btn btn-primary flex-grow-1 py-3 shadow-lg">
+                                    <i class="bi bi-cart-plus me-2"></i> KOLEKSİYONA EKLE
+                                </button>
+                                <button class="btn btn-outline-dark px-4 flex-shrink-0">
+                                     <i class="bi bi-heart"></i>
+                                </button>
+                            </div>
+
+                            <div class="card border-0 p-4 rounded-4 shadow-sm" style="background: var(--card-bg); border: 1px solid var(--border-color) !important;">
+                                <div class="d-flex align-items-center gap-3 mb-3">
+                                    <div class="bg-primary-red text-white p-2 rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                        <i class="bi bi-shield-check"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0 fw-bold tracking-tight uppercase text-main small">Orijinallik Garantisi</h6>
+                                        <p class="x-small text-muted mb-0">Tüm kartlarımız uzman ekibimizce doğrulanmıştır.</p>
+                                    </div>
+                                </div>
+                                <hr class="opacity-10 my-3">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="bg-dark text-white p-2 rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                        <i class="bi bi-truck"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="mb-0 fw-bold tracking-tight uppercase text-main small">Hızlı Gönderim</h6>
+                                        <p class="x-small text-muted mb-0">24 saat içerisinde kargoya verilir.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                $('#product-detail').html(html);
+            });
+        }
+    </script>
+</body>
+</html>

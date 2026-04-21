@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique TCG - Pokémon Koleksiyon Merkezi</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('tcg_theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <div class="logo-circle bg-primary-red rounded-circle"></div>
+                <span class="fw-bold tracking-tighter">BOUTIQUE<span class="text-primary-red">TCG</span></span>
+            </a>
+            
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-center" id="navContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Ana Sayfa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html">Mağaza</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html?category=Tekli Kartlar">Tekli Kartlar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html?category=Booster Paketleri">Booster</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html?category=Dereceli Kartlar">Dereceli</a></li>
+                </ul>
+            </div>
+
+            <div class="d-flex align-items-center gap-2" id="auth-actions">
+                <div id="theme-toggle" class="p-2">
+                    <i class="bi bi-moon-fill h5 mb-0"></i>
+                </div>
+                <a href="cart.html" class="position-relative p-2">
+                    <i class="bi bi-bag h5 mb-0"></i>
+                    <span id="cart-badge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary-red opacity-0" style="font-size: 0.6rem; padding: 4px 6px;">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-white d-flex align-items-center">
+        <img src="https://picsum.photos/seed/pokemonhero/1920/1080?blur=5" class="hero-bg" alt="bg">
+        <div class="container position-relative">
+            <div class="row align-items-center">
+                <div class="col-lg-7 animate-fade-in-up">
+                    <span class="text-accent-yellow fw-bold x-small text-uppercase tracking-widest mb-3 d-block">Premium Pokémon Koleksiyonları</span>
+                    <h1 class="display-2 fw-bold mb-4 lh-1 tracking-tighter">NADİR KARTLARIN<br><span class="text-primary-red">YENİ ADRESİ</span></h1>
+                    <p class="lead text-gray-300 mb-5 fw-medium" style="max-width: 500px">Dünyanın en nadir Pokémon kartları, mühürlü kutular ve profesyonel dereceli koleksiyon parçaları şimdi Türkiye'de.</p>
+                    <div class="d-flex gap-3">
+                        <a href="shop.html" class="btn btn-primary">MARKETİ GEZ</a>
+                        <a href="shop.html?category=Dereceli Kartlar" class="btn btn-outline-light px-5 py-3 fw-bold rounded-0">DERECELİLER</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block">
+                    <img src="https://images.pokemontcg.io/sm115/SV49_hires.png" alt="Featured" class="img-fluid floating-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- High Trust Indicators -->
+    <section class="py-5 border-bottom bg-main">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="trust-card h-100 animate-fade-in-up" style="animation-delay: 0.1s">
+                        <i class="bi bi-shield-check"></i>
+                        <h6 class="fw-bold text-uppercase tracking-widest small text-main mb-3">Garantili Orijinal</h6>
+                        <p class="text-muted small mb-0 px-3">Her kart uzman ekibimizce tek tek doğrulanıp sertifikalandırılır.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="trust-card h-100 animate-fade-in-up" style="animation-delay: 0.2s">
+                        <i class="bi bi-truck"></i>
+                        <h6 class="fw-bold text-uppercase tracking-widest small text-main mb-3">Zırhlı Gönderim</h6>
+                        <p class="text-muted small mb-0 px-3">En değerli kartlarınız Bubble Wrap ve Hardcase ile %100 güvende.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="trust-card h-100 animate-fade-in-up" style="animation-delay: 0.3s">
+                        <i class="bi bi-gem"></i>
+                        <h6 class="fw-bold text-uppercase tracking-widest small text-main mb-3">Nadirlik Odağı</h6>
+                        <p class="text-muted small mb-0 px-3">Sadece en kaliteli ve yatırım değeri olan parçaları seçiyoruz.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="trust-card h-100 animate-fade-in-up" style="animation-delay: 0.4s">
+                        <i class="bi bi-patch-check"></i>
+                        <h6 class="fw-bold text-uppercase tracking-widest small text-main mb-3">Üst Düzey Kondisyon</h6>
+                        <p class="text-muted small mb-0 px-3">CGC ve PSA standartlarında dürüst kondisyon değerlendirmesi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="py-5">
+        <div class="container animate-fade-in-up">
+            <div class="text-center mb-5">
+                <span class="text-primary-red fw-bold x-small text-uppercase tracking-widest mb-2 d-block">Özel Koleksiyonlar</span>
+                <h2 class="display-5 fw-bold tracking-tighter text-main mb-0">MAĞAZAYI KEŞFET</h2>
+                <div class="header-line mx-auto"></div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <a href="shop.html?category=Tekli Kartlar" class="text-decoration-none">
+                        <div class="category-card">
+                            <img src="https://picsum.photos/seed/single-card/600/800" alt="Holo Cards">
+                            <div class="category-card-overlay">
+                                <div class="category-tag">NADİR</div>
+                                <h3 class="fw-bold tracking-tighter mb-1">TEKLİ KARTLAR</h3>
+                                <p class="small opacity-75 mb-0">Holo, Reverse Holo ve Gizli Nadir parçalar.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <a href="shop.html?category=Booster Paketleri" class="text-decoration-none">
+                        <div class="category-card">
+                            <img src="https://picsum.photos/seed/tcg-pack/600/800" alt="Boosters">
+                            <div class="category-card-overlay">
+                                <div class="category-tag">YENİ</div>
+                                <h3 class="fw-bold tracking-tighter mb-1">BOOSTER PAKETLERİ</h3>
+                                <p class="small opacity-75 mb-0">En yeni setlerden sealed (mühürlü) paketler.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <a href="shop.html?category=Dereceli Kartlar" class="text-decoration-none">
+                        <div class="category-card">
+                            <img src="https://picsum.photos/seed/psa-graded/600/800" alt="Graded">
+                            <div class="category-card-overlay">
+                                <div class="category-tag">PREMIUM</div>
+                                <h3 class="fw-bold tracking-tighter mb-1">DERECELİ KARTLAR</h3>
+                                <p class="small opacity-75 mb-0">PSA ve CGC onaylı yatırım değeri yüksek kartlar.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-end mb-5">
+                <div>
+                    <h2 class="text-uppercase fw-bold tracking-tighter mb-0">ÖNE ÇIKANLAR</h2>
+                    <div class="header-line"></div>
+                </div>
+                <a href="shop.html" class="text-primary-red fw-bold text-decoration-none small tracking-widest">TÜMÜNÜ GÖR &rarr;</a>
+            </div>
+            <div class="row g-4" id="featured-products">
+                <!-- Products dynamically loaded -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Promo Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="bg-dark text-white p-5 rounded-0 position-relative overflow-hidden">
+                <div class="row align-items-center position-relative" style="z-index: 2">
+                    <div class="col-lg-8">
+                        <h2 class="display-5 fw-bold tracking-tighter mb-3">İLK ALIŞVERİŞİNE ÖZEL<br><span class="text-accent-yellow">%15 İNDİRİM</span></h2>
+                        <p class="lead opacity-75 mb-0">Boutique TCG ailesine katıl ve nadir koleksiyonun için ilk adımı indirimli at.</p>
+                    </div>
+                    <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+                        <a href="auth.html" class="btn btn-primary tracking-widest px-5">HEMEN ÜYE OL</a>
+                    </div>
+                </div>
+                <div class="position-absolute top-50 start-100 translate-middle text-primary-red opacity-25 d-none d-lg-block" style="font-size: 15rem; font-weight: 900; filter: blur(20px)">TCG</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Redesigned Footer -->
+    <footer class="py-5 mt-5">
+        <div class="container pt-5">
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6">
+                    <a class="navbar-brand d-flex align-items-center gap-2 mb-4 p-0" href="index.html">
+                        <div class="logo-circle bg-primary-red rounded-circle"></div>
+                        <span class="fw-bold tracking-tighter">BOUTIQUE<span class="text-primary-red">TCG</span></span>
+                    </a>
+                    <p class="text-muted small leading-relaxed mb-4">
+                        Nadir Pokémon koleksiyoncuları için küratörlüğü yapılmış, güvenilir ve tutkulu bir pazar yeri. Hazineleriniz burada güvende.
+                    </p>
+                    <div class="d-flex">
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-discord"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold x-small text-uppercase tracking-widest mb-4">Keşfet</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="shop.html" class="footer-link">Tüm Kartlar</a></li>
+                        <li class="mb-2"><a href="shop.html?category=Dereceli Kartlar" class="footer-link">Dereceli Kartlar</a></li>
+                        <li class="mb-2"><a href="shop.html?category=Booster Paketleri" class="footer-link">Booster'lar</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold x-small text-uppercase tracking-widest mb-4">Destek</h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="footer-link">Kargo Takip</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">SSS</a></li>
+                        <li class="mb-2"><a href="#" class="footer-link">Kullanım Şartları</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h6 class="fw-bold x-small text-uppercase tracking-widest mb-4">Bülten</h6>
+                    <p class="text-muted small mb-4">Yeni gelen nadir parçalardan ilk siz haberdar olun.</p>
+                    <div class="input-group">
+                        <input type="email" class="form-control rounded-start-pill border-2 ps-4 x-small fw-bold" placeholder="E-posta adresiniz">
+                        <button class="btn btn-primary rounded-end-pill px-4 x-small fw-bold">KATIL</button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top mt-5 pt-4 d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+                <p class="x-small text-muted fw-bold mb-0">© 2026 BOUTIQUE TCG. GERÇEK TUTKUYLA ÜRETİLDİ.</p>
+                <div class="d-flex gap-4">
+                    <img src="https://cdn-icons-png.flaticon.com/512/349/349221.png" height="20" class="opacity-50 grayscale" alt="Visa">
+                    <img src="https://cdn-icons-png.flaticon.com/512/349/349228.png" height="20" class="opacity-50 grayscale" alt="MasterCard">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+    <script>
+        $(document).ready(function() {
+            loadFeaturedProducts();
+        });
+
+        function loadFeaturedProducts() {
+            $.get('/api/products', function(products) {
+                const featured = products.slice(0, 4);
+                let html = '';
+                featured.forEach(p => {
+                    html += `
+                        <div class="col-md-3">
+                            <div class="card product-card border-0 h-100 position-relative shadow-sm">
+                                <div class="badge-rarity">${p.rarity}</div>
+                                <a href="product.html?id=${p.id}" class="text-decoration-none">
+                                    <div class="card-img-container">
+                                        <img src="${p.image}" class="img-fluid" alt="${p.name}">
+                                    </div>
+                                </a>
+                                <div class="card-body p-4 d-flex flex-column">
+                                    <span class="text-primary-red x-small fw-bold text-uppercase tracking-widest mb-2 d-block">${p.category}</span>
+                                    <h6 class="fw-bold mb-3 tracking-tighter text-main">${p.name}</h6>
+                                    <div class="d-flex justify-content-between align-items-center mt-auto pt-3 border-top">
+                                        <span class="fw-bold text-main h5 mb-0 tracking-tighter">$${p.price.toFixed(2)}</span>
+                                        <button onclick="addToCart('${p.id}')" class="btn btn-primary btn-sm rounded-circle p-0" style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;">
+                                            <i class="bi bi-cart-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                $('#featured-products').html(html);
+            });
+        }
+    </script>
+</body>
+</html>
