@@ -10,9 +10,20 @@
   --color-accent-yellow: #F7DC6F;
 }
 
+/* Enable class-based dark mode in T4 */
+@variant dark (&:where(.dark, .dark *));
+
 @layer base {
+  html, body {
+    @apply transition-colors duration-300;
+  }
+
   body {
-    @apply bg-white text-dark-gray font-sans antialiased;
+    @apply bg-white text-dark-gray font-sans antialiased min-h-screen;
+  }
+  
+  .dark body {
+    @apply bg-dark-gray text-white;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -28,9 +39,21 @@
   .btn-outline {
     @apply border-2 border-dark-gray text-dark-gray px-6 py-3 font-medium transition-all hover:bg-dark-gray hover:text-white active:scale-95 flex items-center justify-center gap-2;
   }
+
+  .dark .btn-outline {
+    @apply border-white text-white hover:bg-white hover:text-dark-gray;
+  }
   
   .card-hover {
     @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  .nav-link {
+    @apply hover:text-primary-red transition-colors font-medium text-sm uppercase tracking-widest text-gray-500;
+  }
+
+  .dark .nav-link {
+    @apply text-gray-400 hover:text-primary-red;
   }
 }
 

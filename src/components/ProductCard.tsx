@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
 import { Product } from '../types';
+import { motion } from 'motion/react';
 
 interface ProductCardProps {
   product: Product;
@@ -10,8 +11,12 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
   return (
-    <div className="group relative bg-white border border-gray-100 rounded-sm overflow-hidden card-hover">
-
+    <motion.div 
+      layout
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="group relative bg-white dark:bg-zinc-800/50 border border-gray-100 dark:border-zinc-700/50 rounded-sm overflow-hidden card-hover"
+    >
       {/* Label/Badge */}
       {product.rarity && (
         <span className="absolute top-2 left-2 z-10 bg-dark-gray/90 backdrop-blur-md text-white text-[9px] font-bold px-2 py-0.5 rounded tracking-widest uppercase">
@@ -20,7 +25,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
       )}
       
       {/* Image Container */}
-      <Link to={`/product/${product.id}`} className="block relative aspect-[3/4] overflow-hidden bg-gray-50">
+      <Link to={`/product/${product.id}`} className="block relative aspect-[3/4] overflow-hidden bg-gray-50 dark:bg-zinc-900">
         <img 
           src={product.image} 
           alt={product.name}
@@ -32,28 +37,29 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart }) => {
 
       {/* Content */}
       <div className="p-4">
-        <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1">
+        <p className="text-[10px] text-primary-red font-bold uppercase tracking-widest mb-1">
           {product.category}
         </p>
         <Link to={`/product/${product.id}`} className="block">
-          <h3 className="text-sm font-semibold text-dark-gray line-clamp-1 group-hover:text-primary-red transition-colors mb-2">
+          <h3 className="text-sm font-semibold text-dark-gray dark:text-white line-clamp-1 group-hover:text-primary-red transition-colors mb-2">
             {product.name}
           </h3>
         </Link>
         <div className="flex items-center justify-between mt-auto">
-          <span className="font-display font-bold text-lg text-dark-gray">
+          <span className="font-display font-bold text-lg text-dark-gray dark:text-white">
             ${product.price.toFixed(2)}
           </span>
-          <button 
+          <motion.button 
+            whileTap={{ scale: 0.8 }}
             onClick={() => onAddToCart(product)}
-            className="p-2.5 bg-gray-100 text-dark-gray hover:bg-primary-red hover:text-white transition-all rounded-full"
-            title="Add to cart"
+            className="p-2.5 bg-gray-100 dark:bg-zinc-700 text-dark-gray dark:text-white hover:bg-primary-red hover:text-white transition-all rounded-full"
+            title="Sepete Ekle"
           >
             <ShoppingCart size={16} />
-          </button>
+          </motion.button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

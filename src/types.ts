@@ -2,7 +2,7 @@ export interface Product {
   id: string;
   name: string;
   price: number;
-  category: 'Booster Packs' | 'Single Cards' | 'Elite Trainer Boxes' | 'Graded Cards';
+  category: 'Booster Paketleri' | 'Tekli Kartlar' | 'Elite Trainer Boxlar' | 'Dereceli Kartlar';
   image: string;
   rarity?: string;
   set?: string;
